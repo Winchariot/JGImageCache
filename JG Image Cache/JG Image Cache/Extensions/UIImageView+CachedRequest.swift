@@ -1,9 +1,9 @@
 //
 //  UIImageView+CachedRequest.swift
-//  uShip
+//  JG Image Cache
 //
 //  Created by James Gillin on 7/13/17.
-//  Copyright © 2017 uShip. All rights reserved.
+//  Copyright © 2017 James Gillin. All rights reserved.
 //
 
 import UIKit

@@ -1,9 +1,9 @@
 //
 //  ImageCacheManager.swift
-//  uShip
+//  JG Image Cache
 //
 //  Created by James Gillin on 7/13/17.
-//  Copyright © 2017 uShip. All rights reserved.
+//  Copyright © 2017 James Gillin. All rights reserved.
 //
 
 import UIKit
@@ -26,10 +26,10 @@ class ImageCacheManager {
     let imageCache: ImageCacheProtocol
     let workerQueue = DispatchQueue.global()
     
-    fileprivate var diskCacheTTL: TimeInterval
-    fileprivate var diskCacheSizeLimit: Int
-    fileprivate var requestsInFlight = [URL:[ImageCompletion]]()
-    fileprivate var expirationDate: Date {
+    private var diskCacheTTL: TimeInterval
+    private var diskCacheSizeLimit: Int
+    private var requestsInFlight = [URL:[ImageCompletion]]()
+    private var expirationDate: Date {
         return Date().addingTimeInterval(diskCacheTTL * -1)
     }
     
@@ -115,7 +115,7 @@ class ImageCacheManager {
         }
     }
 
-    fileprivate func _callCompletionHandlers(for url: URL, result: Result<UIImage, Error>) {
+    private func _callCompletionHandlers(for url: URL, result: Result<UIImage, Error>) {
         workerQueue.sync {
             guard let completionsForRequest = requestsInFlight[url] else { return }
             for completion in completionsForRequest {

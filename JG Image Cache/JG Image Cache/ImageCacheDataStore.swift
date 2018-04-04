@@ -1,15 +1,15 @@
 //
 //  ImageCacheDataStore.swift
-//  uShip
+//  JG Image Cache
 //
 //  Created by James Gillin on 7/25/17.
-//  Copyright © 2017 uShip. All rights reserved.
+//  Copyright © 2017 James Gillin. All rights reserved.
 //
 
 import Foundation
 
 class ImageCacheDataStore: CacheDataStoreProtocol {
-    fileprivate let ioQueue = DispatchQueue(label: "uShip.ImageCache.DiskIOQueue")
+    private let ioQueue = DispatchQueue(label: "JGImageCache.DiskIOQueue")
     
     static var cacheURL: URL? = {
         guard let cachesDir = try? FileManager.default.url(for: .cachesDirectory, in: .userDomainMask, appropriateFor: nil, create: true) else { return nil }

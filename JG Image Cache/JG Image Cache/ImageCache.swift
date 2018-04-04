@@ -1,9 +1,9 @@
 //
 //  ImageCache.swift
-//  uShip
+//  JG Image Cache
 //
 //  Created by James Gillin on 7/17/17.
-//  Copyright © 2017 uShip. All rights reserved.
+//  Copyright © 2017 James Gillin. All rights reserved.
 //
 
 import UIKit
@@ -11,7 +11,7 @@ import UIKit
 class ImageCache: ImageCacheProtocol {
     
     var memoryCache = NSCache<NSString, AnyObject>()
-    fileprivate let fileManager: CacheDataStoreProtocol
+    private let fileManager: CacheDataStoreProtocol
     
     init(fileManager: CacheDataStoreProtocol) {
         self.fileManager = fileManager
