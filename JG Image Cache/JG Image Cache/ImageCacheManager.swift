@@ -10,12 +10,6 @@ import UIKit
 
 typealias ImageCompletion = ((Result<UIImage, ImageCacheError>) -> Void)
 
-enum ImageCacheOptionKey {
-    case memoryCacheLimitBytes
-    case diskCacheLimitBytes
-    case diskCacheTTLSeconds
-}
-
 class ImageCacheManager {
     
     let memoryCache: MemoryCacheProtocol

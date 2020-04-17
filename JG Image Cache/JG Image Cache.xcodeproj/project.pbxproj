@@ -14,7 +14,6 @@
 		8F0F7DC3206C0E3A00C5F742 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0F7DBD206C0E3A00C5F742 /* ImageCacheManager.swift */; };
 		8F0F7DC4206C0E3A00C5F742 /* ImageCacheProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0F7DBE206C0E3A00C5F742 /* ImageCacheProtocol.swift */; };
 		8F0F7DC5206C0E3A00C5F742 /* DiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0F7DBF206C0E3A00C5F742 /* DiskCache.swift */; };
-		8F0F7DC6206C0E3A00C5F742 /* CacheDataStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0F7DC0206C0E3A00C5F742 /* CacheDataStoreProtocol.swift */; };
 		8F0F7DCA206C0E4B00C5F742 /* UIImageView+CachedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0F7DC7206C0E4B00C5F742 /* UIImageView+CachedRequest.swift */; };
 		8F0F7DCB206C0E4B00C5F742 /* URL+ImageCaching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0F7DC8206C0E4B00C5F742 /* URL+ImageCaching.swift */; };
 		8F0F7DCC206C0E4B00C5F742 /* String+md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0F7DC9206C0E4B00C5F742 /* String+md5.swift */; };
@@ -41,7 +40,6 @@
 		8F0F7DBD206C0E3A00C5F742 /* ImageCacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		8F0F7DBE206C0E3A00C5F742 /* ImageCacheProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCacheProtocol.swift; sourceTree = "<group>"; };
 		8F0F7DBF206C0E3A00C5F742 /* DiskCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskCache.swift; sourceTree = "<group>"; };
-		8F0F7DC0206C0E3A00C5F742 /* CacheDataStoreProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheDataStoreProtocol.swift; sourceTree = "<group>"; };
 		8F0F7DC7206C0E4B00C5F742 /* UIImageView+CachedRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+CachedRequest.swift"; sourceTree = "<group>"; };
 		8F0F7DC8206C0E4B00C5F742 /* URL+ImageCaching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+ImageCaching.swift"; sourceTree = "<group>"; };
 		8F0F7DC9206C0E4B00C5F742 /* String+md5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+md5.swift"; sourceTree = "<group>"; };
@@ -100,7 +98,6 @@
 				222104F62449514C002E4262 /* Caches */,
 				8F0F7DD4206C362E00C5F742 /* Supporting Files */,
 				8F0F7DBA206C0E2600C5F742 /* Extensions */,
-				8F0F7DC0206C0E3A00C5F742 /* CacheDataStoreProtocol.swift */,
 				222104F7244962B9002E4262 /* ImageCacheError.swift */,
 				8F0F7DBD206C0E3A00C5F742 /* ImageCacheManager.swift */,
 			);
@@ -246,7 +243,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F0F7DC4206C0E3A00C5F742 /* ImageCacheProtocol.swift in Sources */,
-				8F0F7DC6206C0E3A00C5F742 /* CacheDataStoreProtocol.swift in Sources */,
 				8F0F7DC1206C0E3A00C5F742 /* MemoryCache.swift in Sources */,
 				8F0F7DCA206C0E4B00C5F742 /* UIImageView+CachedRequest.swift in Sources */,
 				8F0F7DCC206C0E4B00C5F742 /* String+md5.swift in Sources */,
