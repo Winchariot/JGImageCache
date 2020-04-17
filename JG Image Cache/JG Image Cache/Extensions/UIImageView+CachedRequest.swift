@@ -13,7 +13,6 @@ extension UIImageView {
     func fetchImage(at url: URL, ignoreCache: Bool = false, completion: ImageCompletion? = nil) {
         ImageCacheManager.shared.fetchImage(
             at: url,
-            ignoreCache: ignoreCache,
             completion: completion ?? { [weak self] result in
                 
             if case .success(let image) = result {

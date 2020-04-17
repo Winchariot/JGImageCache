@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		222104F8244962B9002E4262 /* ImageCacheError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222104F7244962B9002E4262 /* ImageCacheError.swift */; };
 		8F0F7DAA206C0E1500C5F742 /* JG_Image_Cache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F0F7DA0206C0E1500C5F742 /* JG_Image_Cache.framework */; };
 		8F0F7DAF206C0E1500C5F742 /* Image_CacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0F7DAE206C0E1500C5F742 /* Image_CacheTests.swift */; };
-		8F0F7DC1206C0E3A00C5F742 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0F7DBB206C0E3900C5F742 /* ImageCache.swift */; };
-		8F0F7DC2206C0E3A00C5F742 /* ImageCacheManager+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0F7DBC206C0E3A00C5F742 /* ImageCacheManager+Init.swift */; };
+		8F0F7DC1206C0E3A00C5F742 /* MemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0F7DBB206C0E3900C5F742 /* MemoryCache.swift */; };
 		8F0F7DC3206C0E3A00C5F742 /* ImageCacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0F7DBD206C0E3A00C5F742 /* ImageCacheManager.swift */; };
 		8F0F7DC4206C0E3A00C5F742 /* ImageCacheProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0F7DBE206C0E3A00C5F742 /* ImageCacheProtocol.swift */; };
-		8F0F7DC5206C0E3A00C5F742 /* ImageCacheDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0F7DBF206C0E3A00C5F742 /* ImageCacheDataStore.swift */; };
+		8F0F7DC5206C0E3A00C5F742 /* DiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0F7DBF206C0E3A00C5F742 /* DiskCache.swift */; };
 		8F0F7DC6206C0E3A00C5F742 /* CacheDataStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0F7DC0206C0E3A00C5F742 /* CacheDataStoreProtocol.swift */; };
 		8F0F7DCA206C0E4B00C5F742 /* UIImageView+CachedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0F7DC7206C0E4B00C5F742 /* UIImageView+CachedRequest.swift */; };
 		8F0F7DCB206C0E4B00C5F742 /* URL+ImageCaching.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0F7DC8206C0E4B00C5F742 /* URL+ImageCaching.swift */; };
@@ -31,16 +31,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		222104F7244962B9002E4262 /* ImageCacheError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheError.swift; sourceTree = "<group>"; };
 		8F0F7DA0206C0E1500C5F742 /* JG_Image_Cache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JG_Image_Cache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F0F7DA4206C0E1500C5F742 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8F0F7DA9206C0E1500C5F742 /* JG Image CacheTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JG Image CacheTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F0F7DAE206C0E1500C5F742 /* Image_CacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image_CacheTests.swift; sourceTree = "<group>"; };
 		8F0F7DB0206C0E1500C5F742 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8F0F7DBB206C0E3900C5F742 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
-		8F0F7DBC206C0E3A00C5F742 /* ImageCacheManager+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ImageCacheManager+Init.swift"; sourceTree = "<group>"; };
+		8F0F7DBB206C0E3900C5F742 /* MemoryCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryCache.swift; sourceTree = "<group>"; };
 		8F0F7DBD206C0E3A00C5F742 /* ImageCacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCacheManager.swift; sourceTree = "<group>"; };
 		8F0F7DBE206C0E3A00C5F742 /* ImageCacheProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCacheProtocol.swift; sourceTree = "<group>"; };
-		8F0F7DBF206C0E3A00C5F742 /* ImageCacheDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCacheDataStore.swift; sourceTree = "<group>"; };
+		8F0F7DBF206C0E3A00C5F742 /* DiskCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskCache.swift; sourceTree = "<group>"; };
 		8F0F7DC0206C0E3A00C5F742 /* CacheDataStoreProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheDataStoreProtocol.swift; sourceTree = "<group>"; };
 		8F0F7DC7206C0E4B00C5F742 /* UIImageView+CachedRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+CachedRequest.swift"; sourceTree = "<group>"; };
 		8F0F7DC8206C0E4B00C5F742 /* URL+ImageCaching.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+ImageCaching.swift"; sourceTree = "<group>"; };
@@ -66,6 +66,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		222104F62449514C002E4262 /* Caches */ = {
+			isa = PBXGroup;
+			children = (
+				8F0F7DBB206C0E3900C5F742 /* MemoryCache.swift */,
+				8F0F7DBF206C0E3A00C5F742 /* DiskCache.swift */,
+				8F0F7DBE206C0E3A00C5F742 /* ImageCacheProtocol.swift */,
+			);
+			path = Caches;
+			sourceTree = "<group>";
+		};
 		8F0F7D96206C0E1500C5F742 = {
 			isa = PBXGroup;
 			children = (
@@ -87,14 +97,12 @@
 		8F0F7DA2206C0E1500C5F742 /* JG Image Cache */ = {
 			isa = PBXGroup;
 			children = (
+				222104F62449514C002E4262 /* Caches */,
 				8F0F7DD4206C362E00C5F742 /* Supporting Files */,
 				8F0F7DBA206C0E2600C5F742 /* Extensions */,
 				8F0F7DC0206C0E3A00C5F742 /* CacheDataStoreProtocol.swift */,
-				8F0F7DBB206C0E3900C5F742 /* ImageCache.swift */,
-				8F0F7DBF206C0E3A00C5F742 /* ImageCacheDataStore.swift */,
+				222104F7244962B9002E4262 /* ImageCacheError.swift */,
 				8F0F7DBD206C0E3A00C5F742 /* ImageCacheManager.swift */,
-				8F0F7DBC206C0E3A00C5F742 /* ImageCacheManager+Init.swift */,
-				8F0F7DBE206C0E3A00C5F742 /* ImageCacheProtocol.swift */,
 			);
 			path = "JG Image Cache";
 			sourceTree = "<group>";
@@ -238,13 +246,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F0F7DC4206C0E3A00C5F742 /* ImageCacheProtocol.swift in Sources */,
-				8F0F7DC2206C0E3A00C5F742 /* ImageCacheManager+Init.swift in Sources */,
 				8F0F7DC6206C0E3A00C5F742 /* CacheDataStoreProtocol.swift in Sources */,
-				8F0F7DC1206C0E3A00C5F742 /* ImageCache.swift in Sources */,
+				8F0F7DC1206C0E3A00C5F742 /* MemoryCache.swift in Sources */,
 				8F0F7DCA206C0E4B00C5F742 /* UIImageView+CachedRequest.swift in Sources */,
 				8F0F7DCC206C0E4B00C5F742 /* String+md5.swift in Sources */,
-				8F0F7DC5206C0E3A00C5F742 /* ImageCacheDataStore.swift in Sources */,
+				8F0F7DC5206C0E3A00C5F742 /* DiskCache.swift in Sources */,
 				8F0F7DC3206C0E3A00C5F742 /* ImageCacheManager.swift in Sources */,
+				222104F8244962B9002E4262 /* ImageCacheError.swift in Sources */,
 				8F0F7DCB206C0E4B00C5F742 /* URL+ImageCaching.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
