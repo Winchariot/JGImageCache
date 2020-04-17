@@ -33,7 +33,7 @@ class ImageCache: ImageCacheProtocol {
     
     //MARK: - Storage
     
-    func cacheToMemory(image: UIImage, key: String, cost: Int) {
+    func cacheImageToMemory(image: UIImage, key: String, cost: Int) {
         memoryCache.setObject(image, forKey: key as NSString, cost: cost)
     }
     
@@ -41,19 +41,8 @@ class ImageCache: ImageCacheProtocol {
         diskCache.cacheToDisk(data: imageData, filename: filename)
     }
     
-    //MARK: - Cleanup
-    
-    func wipeMemoryCache() {
-        memoryCache.removeAllObjects()
-    }
-        
-    func diskCachedImageURLs() -> [URL] {
-        return diskCache.cachedURLs
-    }
-    
-    func removeImageFromDisk(at imageURL: URL) {
-        diskCache.evictFromDisk(url: imageURL)
-    }
+    //MARK: - Eviction
+
     
     func evictExpiredImagesFromDisk(relativeTo expirationDate: Date) {
         let cachedImageURLs = diskCache.cachedURLs

@@ -54,11 +54,6 @@ class ImageCacheManager {
         self.diskCacheTTL = diskCacheTTL
         
         NotificationCenter.default.addObserver(self, selector: #selector(downsizeDiskCache), name: UIApplication.willTerminateNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(wipeMemoryCache), name: UIApplication.didReceiveMemoryWarningNotification, object: nil)
-    }
-    
-    @objc func wipeMemoryCache() {
-        imageCache.wipeMemoryCache()
     }
     
     @objc func downsizeDiskCache() {
@@ -114,7 +109,7 @@ class ImageCacheManager {
                     return
                 }
                 
-                self?.imageCache.cacheToMemory(image: image, key: url.cacheKey, cost: imageData.count)
+                self?.imageCache.cacheImageToMemory(image: image, key: url.cacheKey, cost: imageData.count)
                 self?.imageCache.cacheImageToDisk(imageData: imageData, filename: url.cacheKey)
                 let result: Result<UIImage, Error> = .success(image)
                 self?._callCompletionHandlers(for: url, result: result)
