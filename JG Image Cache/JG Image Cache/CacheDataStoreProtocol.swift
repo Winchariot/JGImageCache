@@ -9,7 +9,7 @@
 import Foundation
 
 protocol CacheDataStoreProtocol {
-    var cacheSize: Int { get }
+    var diskCacheSizeBytes: Int { get }
     var cachedURLs: [URL] { get }
     func cacheToDisk(data: Data, filename: String)
     func evictFromDisk(url: URL)

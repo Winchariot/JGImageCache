@@ -10,19 +10,13 @@ import Foundation
 import CommonCrypto
 
 extension String {
-    var md5: String? {
-        guard let str = self.cString(using: .utf8) else { return nil }
-        let strLen = CC_LONG(self.lengthOfBytes(using: .utf8))
-        let digestLen = Int(CC_MD5_DIGEST_LENGTH)
-        let result = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: digestLen)
-        defer { result.deallocate(capacity: digestLen) }
-        CC_MD5(str, strLen, result)
-        
-        var hash: String = ""
-        for i in 0..<digestLen {
-            hash = hash.appendingFormat("%02x", result[i])
+    var md5: String {
+        let data = Data(self.utf8)
+        let hash = data.withUnsafeBytes { (bytes: UnsafeRawBufferPointer) -> [UInt8] in
+            var hash = [UInt8](repeating: 0, count: Int(CC_MD5_DIGEST_LENGTH))
+            CC_MD5(bytes.baseAddress, CC_LONG(data.count), &hash)
+            return hash
         }
-        
-        return hash
+        return hash.map { String(format: "%02x", $0) }.joined()
     }
 }

@@ -24,6 +24,11 @@ class Image_CacheTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let string = "Peeble bop"
+        print(string)
+        print(string.md5)
+        let blah = DiskCache.cacheURL
+        let derp = DiskCache.cacheURL
     }
     
     func testPerformanceExample() {

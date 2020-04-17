@@ -11,60 +11,62 @@ import UIKit
 class ImageCache: ImageCacheProtocol {
     
     var memoryCache = NSCache<NSString, AnyObject>()
-    private let fileManager: CacheDataStoreProtocol
+    private let diskCache: CacheDataStoreProtocol
     
     init(fileManager: CacheDataStoreProtocol) {
-        self.fileManager = fileManager
+        self.diskCache = fileManager
     }
     
-    //MARK: - Memory cache
-    
+    //MARK: - Retrieval
+        
     func imageFromMemoryCache(url: URL) -> UIImage? {
         let key = url.cacheKey as NSString
         return memoryCache.object(forKey: key) as? UIImage
     }
     
-    func cacheToMemory(image: UIImage, key: String, cost: Int) {
-        memoryCache.setObject(image, forKey: key as NSString, cost: cost)
-    }
-    
-    func wipeMemoryCache() {
-        memoryCache.removeAllObjects()
-    }
-    
-    //MARK: - Disk cache
-    
-    func diskCachedImageURLs() -> [URL] {
-        return fileManager.cachedURLs
-    }
-    
     func imageFromDiskCache(url: URL) -> UIImage? {
-        if let cachedData = fileManager.retrieveFromDisk(filename: url.cacheKey) {
+        if let cachedData = diskCache.retrieveFromDisk(filename: url.cacheKey) {
             return UIImage(data: cachedData)
         }
         return nil
     }
     
+    //MARK: - Storage
+    
+    func cacheToMemory(image: UIImage, key: String, cost: Int) {
+        memoryCache.setObject(image, forKey: key as NSString, cost: cost)
+    }
+    
     func cacheImageToDisk(imageData: Data, filename: String) {
-        fileManager.cacheToDisk(data: imageData, filename: filename)
+        diskCache.cacheToDisk(data: imageData, filename: filename)
+    }
+    
+    //MARK: - Cleanup
+    
+    func wipeMemoryCache() {
+        memoryCache.removeAllObjects()
+    }
+        
+    func diskCachedImageURLs() -> [URL] {
+        return diskCache.cachedURLs
     }
     
     func removeImageFromDisk(at imageURL: URL) {
-        fileManager.evictFromDisk(url: imageURL)
+        diskCache.evictFromDisk(url: imageURL)
     }
     
     func evictExpiredImagesFromDisk(relativeTo expirationDate: Date) {
-        let cachedImageURLs = fileManager.cachedURLs
+        let cachedImageURLs = diskCache.cachedURLs
         
         for imageURL in cachedImageURLs {
             if imageURL.isExpired(relativeTo: expirationDate) {
-                fileManager.evictFromDisk(url: imageURL)
+                diskCache.evictFromDisk(url: imageURL)
             }
         }
     }
     
     func downsizeDiskCache(to targetCacheSize: Int) {
-        let cachedImageURLs = fileManager.cachedURLs
+        let cachedImageURLs = diskCache.cachedURLs
         let urlResourceKeys: Set<URLResourceKey> = [.contentAccessDateKey]
         //TODO this has got to have a cleaner way to sort
         let imageURLsByAge = cachedImageURLs.sorted { (lhs, rhs) -> Bool in
@@ -73,8 +75,8 @@ class ImageCache: ImageCacheProtocol {
             return lhsAge < rhsAge
         }
         for cachedImageURL in imageURLsByAge {
-            if fileManager.cacheSize < targetCacheSize { break }
-            fileManager.evictFromDisk(url: cachedImageURL)
+            if diskCache.diskCacheSizeBytes < targetCacheSize { break }
+            diskCache.evictFromDisk(url: cachedImageURL)
         }
     }
 }

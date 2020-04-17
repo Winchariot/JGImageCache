@@ -8,17 +8,17 @@
 
 import UIKit
 
-enum Result<T, U> {
-    case success(T)
-    case failure(U)
-}
+//enum Result<T, U> {
+//    case success(T)
+//    case failure(U)
+//}
 
 typealias ImageCompletion = ((Result<UIImage, Error>) -> Void)
 
-struct ImageCacheOptions {
-    let memoryCacheLimit: Int
-    let diskCacheLimit: Int
-    let diskCacheTTL: TimeInterval
+enum ImageCacheOptionKey {
+    case memoryCacheLimitBytes
+    case diskCacheLimitBytes
+    case diskCacheTTLSeconds
 }
 
 class ImageCacheManager {
@@ -33,20 +33,28 @@ class ImageCacheManager {
         return Date().addingTimeInterval(diskCacheTTL * -1)
     }
     
-    //public for testing--use .shared singleton
-    init(imageCache: ImageCacheProtocol, imageCacheOptions: ImageCacheOptions) {
+    static let shared: ImageCacheManager = {
+        let imageCacheOptions: [ImageCacheOptionKey: Any] = [
+            .memoryCacheLimitBytes: 48 * 1024 * 1024,
+            .diskCacheLimitBytes: 64 * 1024 * 1024,
+            .diskCacheTTLSeconds: 60 * 60 * 24 * 10]
+        
+        let fileManager = DiskCache()
+        return ImageCacheManager(imageCache: ImageCache(fileManager: fileManager), options: imageCacheOptions)
+    }()
+    
+    private init(imageCache: ImageCacheProtocol, options: [ImageCacheOptionKey: Any]) {
+        let memoryCacheLimit = options[.memoryCacheLimitBytes] as? Int ?? 32 * 1024 * 1024
+        let diskCacheLimit = options[.diskCacheLimitBytes] as? Int ?? 64 * 1024 * 1024
+        let diskCacheTTL = options[.diskCacheTTLSeconds] as? TimeInterval ?? 60 * 60 * 24 * 10
         
         self.imageCache = imageCache
-        self.imageCache.memoryCache.totalCostLimit = imageCacheOptions.memoryCacheLimit
-        self.diskCacheSizeLimit = imageCacheOptions.diskCacheLimit
-        self.diskCacheTTL = imageCacheOptions.diskCacheTTL
+        self.imageCache.memoryCache.totalCostLimit = memoryCacheLimit
+        self.diskCacheSizeLimit = diskCacheLimit
+        self.diskCacheTTL = diskCacheTTL
         
-        NotificationCenter.default.addObserver(self, selector: #selector(downsizeDiskCache), name: .UIApplicationWillTerminate, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(wipeMemoryCache), name: .UIApplicationDidReceiveMemoryWarning, object: nil)
-    }
-    
-    deinit {
-        NotificationCenter.default.removeObserver(self)
+        NotificationCenter.default.addObserver(self, selector: #selector(downsizeDiskCache), name: UIApplication.willTerminateNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(wipeMemoryCache), name: UIApplication.didReceiveMemoryWarningNotification, object: nil)
     }
     
     @objc func wipeMemoryCache() {
